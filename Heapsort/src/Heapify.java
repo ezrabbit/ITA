@@ -9,12 +9,39 @@ public class Heapify {
     private int[] arr21 = new int[]{1, 6, 10, 2, 3, 12, 13, 4, 5};
 
     public void maxHeapify(int[] arr, int i){
-        int largest = i, left = 2*(i+1)-1<arr.length ? arr[2*(i+1)-1] : Integer.MIN_VALUE, right = 2*(i+1)+1-1<arr.length ? arr[2*(i+1)+1-1] : Integer.MIN_VALUE;
+        int largest = i, left = getLeftChild(arr, i), right = getRightChild(arr, i);
         if(left > arr[largest])  largest = 2*(i+1)-1;
         if(right > arr[largest]) largest = 2*(i+1)+1-1;
         if(largest!=i){
             swap(arr, i, largest);
             maxHeapify(arr, largest);
+        }
+    }
+
+    private int getRightChild(int[] arr, int i) {
+        return 2*(i+1)+1-1<arr.length ? arr[2*(i+1)+1-1] : Integer.MIN_VALUE;
+    }
+
+    private int getLeftChild(int[] arr, int i) {
+        return 2*(i+1)-1<arr.length ? arr[2*(i+1)-1] : Integer.MIN_VALUE;
+    }
+
+    //iteration
+    //1 3 2
+    public void maxHeapify1(int[] arr, int i){
+        int cur = i, largest, left, right;
+        while(true){
+            largest = cur;
+            left = getLeftChild(arr, cur);
+            right = getRightChild(arr, cur);
+            if(left > arr[largest]) largest = 2*(cur+1)-1;
+            if(right > arr[largest])    largest = 2*(cur+1)+1-1;
+            if(largest!=cur){
+                swap(arr, cur, largest);
+                cur = largest;
+            }else{
+                break;
+            }
         }
     }
 
@@ -30,16 +57,10 @@ public class Heapify {
         int node, left, right;
         for (int i = 0; i < arr11.length; i++) {
             node = arr11[i];
-            if((i+1)*2-1<arr11.length)
-                left = arr11[(i+1)*2-1];
-            else
-                left = Integer.MIN_VALUE;
-            if((i+1)*2+1-1<arr11.length)
-                right = arr11[(i+1)*2+1-1];
-            else
-                right = Integer.MIN_VALUE;
+            left = getLeftChild(arr11, i);
+            right = getRightChild(arr11, i);
             if(node < left || node < right){
-                maxHeapify(arr11, i);
+                maxHeapify1(arr11, i);
                 break;
             }
         }
@@ -52,14 +73,8 @@ public class Heapify {
         int node, left, right;
         for (int i = 0; i < arr12.length; i++) {
             node = arr12[i];
-            if((i+1)*2-1<arr12.length)
-                left = arr12[(i+1)*2-1];
-            else
-                left = Integer.MIN_VALUE;
-            if((i+1)*2+1-1<arr12.length)
-                right = arr12[(i+1)*2+1-1];
-            else
-                right = Integer.MIN_VALUE;
+            left = getLeftChild(arr12, i);
+            right = getRightChild(arr12, i);
             if(node < left || node < right){
                 maxHeapify(arr12, i);
                 break;
@@ -84,14 +99,8 @@ public class Heapify {
         //find the node that needs to be min-heapified
         for (int i = 0; i < arr21.length; i++) {
             node = arr21[i];
-            if((i+1)*2-1<arr21.length)
-                left = arr21[(i+1)*2-1];
-            else
-                left = Integer.MIN_VALUE;
-            if((i+1)*2+1-1<arr21.length)
-                right = arr21[(i+1)*2+1-1];
-            else
-                right = Integer.MIN_VALUE;
+            left = getLeftChild(arr21, i);
+            right = getRightChild(arr21, i);
             if(node > left || node > right){
                 minHeapify(arr21, i);
                 break;
@@ -105,14 +114,8 @@ public class Heapify {
         //find the node that needs to be min-heapified
         for (int i = 0; i < arr22.length; i++) {
             node = arr22[i];
-            if((i+1)*2-1<arr22.length)
-                left = arr22[(i+1)*2-1];
-            else
-                left = Integer.MIN_VALUE;
-            if((i+1)*2+1-1<arr22.length)
-                right = arr22[(i+1)*2+1-1];
-            else
-                right = Integer.MIN_VALUE;
+            left = getLeftChild(arr22, i);
+            right = getRightChild(arr22, i);
             if(node > left || node > right){
                 minHeapify(arr22, i);
                 break;
