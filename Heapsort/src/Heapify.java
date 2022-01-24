@@ -124,6 +124,25 @@ public class Heapify {
         System.out.println(Arrays.toString(arr22));
     }
 
+    public void buildMaxHeap(int[] arr){
+        int l = arr.length;
+        for (int i = l/2-1; i >= 0; i--) {
+            maxHeapify(arr, i);
+        }
+    }
 
+    @Test
+    public void testBuildMaxHeap1(){
+        int[] arr1 = new int[]{4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
+        buildMaxHeap(arr1);
+        System.out.println(Arrays.toString(arr1));
+    }
+
+    @Test
+    public void testBuildMaxHeap2(){
+        int[] arr2 = new int[]{5, 3, 17, 10, 84, 19, 6, 22, 9};
+        buildMaxHeap(arr2);
+        System.out.println(Arrays.toString(arr2));
+    }
 
 }
