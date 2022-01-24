@@ -8,7 +8,7 @@ public class Heapify {
     private int[] arr22 = new int[]{3, 1, 2};
     private int[] arr21 = new int[]{1, 6, 10, 2, 3, 12, 13, 4, 5};
 
-    public void maxHeapify(int[] arr, int i){
+    public static void maxHeapify(int[] arr, int i){
         int largest = i, left = getLeftChild(arr, i), right = getRightChild(arr, i);
         if(left > arr[largest])  largest = 2*(i+1)-1;
         if(right > arr[largest]) largest = 2*(i+1)+1-1;
@@ -18,17 +18,17 @@ public class Heapify {
         }
     }
 
-    private int getRightChild(int[] arr, int i) {
+    private static int getRightChild(int[] arr, int i) {
         return 2*(i+1)+1-1<arr.length ? arr[2*(i+1)+1-1] : Integer.MIN_VALUE;
     }
 
-    private int getLeftChild(int[] arr, int i) {
+    private static int getLeftChild(int[] arr, int i) {
         return 2*(i+1)-1<arr.length ? arr[2*(i+1)-1] : Integer.MIN_VALUE;
     }
 
     //iteration
     //1 3 2
-    public void maxHeapify1(int[] arr, int i){
+    public static void maxHeapify1(int[] arr, int i){
         int cur = i, largest, left, right;
         while(true){
             largest = cur;
@@ -45,7 +45,7 @@ public class Heapify {
         }
     }
 
-    private void swap(int[] arr, int i, int j) {
+    public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
@@ -83,7 +83,7 @@ public class Heapify {
         System.out.println(Arrays.toString(arr12));
     }
 
-    public void minHeapify(int[] arr, int i){
+    public static void minHeapify(int[] arr, int i){
         int smallest = i, left = 2*(i+1)-1<arr.length ? arr[2*(i+1)-1] : Integer.MAX_VALUE, right = 2*(i+1)+1-1<arr.length ? arr[2*(i+1)+1-1] : Integer.MAX_VALUE;
         if(left < arr[smallest])    smallest = 2*(i+1)-1;
         if(right < arr[smallest])   smallest = 2*(i+1)+1-1;
@@ -124,7 +124,7 @@ public class Heapify {
         System.out.println(Arrays.toString(arr22));
     }
 
-    public void buildMaxHeap(int[] arr){
+    public static void buildMaxHeap(int[] arr){
         int l = arr.length;
         for (int i = l/2-1; i >= 0; i--) {
             maxHeapify(arr, i);
