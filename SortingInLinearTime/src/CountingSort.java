@@ -5,12 +5,20 @@ public class CountingSort {
         int[] arr1 = new int[]{0, 5, 7, 6, 4, 4, 6, 3, 2, 4};
         int[] arr2 = new int[]{1, 1, 2, 0};
         int[] arr3 = new int[]{0, 0, 1, 5, 6, 7, 2, 2, 3, 7, 3, 6, 8, 9, 1, 0, 2, 2, 3, 4};
+
+        int[] arr4 = new int[]{13, 11, 12, 12};
+
         int[] sortedArr1 = countingSort(arr1, getUpperBound(arr1));
         int[] sortedArr2 = countingSort(arr2, getUpperBound(arr2));
         int[] sortedArr3 = countingSort(arr3, getUpperBound(arr3));
+
+        int[] sortedArr4 = countingSort(arr4, getUpperBound(arr4));
+
         System.out.println(Arrays.toString(sortedArr1));
         System.out.println(Arrays.toString(sortedArr2));
         System.out.println(Arrays.toString(sortedArr3));
+
+        System.out.println(Arrays.toString(sortedArr4));
     }
 
     private static int[] countingSort(int[] arr, int upperBound) {
