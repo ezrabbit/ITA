@@ -21,7 +21,7 @@ public class CountingSort {
         System.out.println(Arrays.toString(sortedArr4));
     }
 
-    private static int[] countingSort(int[] arr, int upperBound) {
+    public static int[] countingSort(int[] arr, int upperBound) {
         int[] sortedArr = new int[arr.length];
         int[] counts = new int[upperBound+1];
         for (int i = 0; i < arr.length; i++) {
